@@ -1,0 +1,19 @@
+// SPDX-License-Identifier: GPL-2.0-only
+#include <dt-bindings/gpio/gpio.h>
+
+/* Board fragment: &can0 must already be defined by the SoC .dtsi. */
+/ {
+	can0_transceiver: can-phy0 {
+		compatible = "ti,tcan1042";
+		#phy-cells = <0>;
+		standby-gpios = <&gpio0 12 GPIO_ACTIVE_HIGH>;
+		max-bitrate = <5000000>;
+	};
+};
+
+&can0 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_can0>;
+	phys = <&can0_transceiver>;
+	status = "okay";
+};

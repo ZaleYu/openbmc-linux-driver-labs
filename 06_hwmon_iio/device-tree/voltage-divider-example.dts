@@ -1,0 +1,21 @@
+/dts-v1/;
+/plugin/;
+
+/*
+ * A 100k/20k divider maps a 0..10.8 V rail into the 0..1.8 V ADC range.
+ * The voltage-divider consumer exposes a rescaled channel to iio-hwmon.
+ */
+/ {
+	v12_sense: v12-sense {
+		compatible = "voltage-divider";
+		io-channels = <&adc 3>;
+		output-ohms = <20000>;
+		full-ohms = <120000>;
+		#io-channel-cells = <0>;
+	};
+
+	rail_hwmon {
+		compatible = "iio-hwmon";
+		io-channels = <&v12_sense>;
+	};
+};

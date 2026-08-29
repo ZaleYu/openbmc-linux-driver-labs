@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: GPL-2.0-only
+#include <dt-bindings/gpio/gpio.h>
+
+/* Verify enable polarity and power sequencing against the transceiver. */
+&uart3 {
+	current-speed = <19200>;
+	status = "okay";
+
+	lin-temperature {
+		compatible = "demo,lin-temp-node";
+		demo,lin-frame-id = <0x12>;
+		demo,poll-interval-ms = <500>;
+		enable-gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
+	};
+};

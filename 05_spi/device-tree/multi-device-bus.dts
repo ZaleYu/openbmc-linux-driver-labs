@@ -1,0 +1,23 @@
+/dts-v1/;
+/plugin/;
+
+/* Each target may use a different mode and maximum clock. */
+&spi2 {
+	status = "okay";
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	sensor@0 {
+		compatible = "openai,demo-spi-sensor";
+		reg = <0>;
+		spi-max-frequency = <1000000>;
+	};
+
+	board-cpld@1 {
+		compatible = "vendor,board-cpld";
+		reg = <1>;
+		spi-max-frequency = <8000000>;
+		spi-cpha; /* mode 1 */
+	};
+};
+

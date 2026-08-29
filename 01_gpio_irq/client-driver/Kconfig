@@ -1,0 +1,10 @@
+config DEMO_GPIO_IRQ
+	tristate "Educational GPIO and IRQ monitor"
+	depends on GPIOLIB
+	depends on OF || COMPILE_TEST
+	help
+	  Build an educational platform driver that requests presence, fault,
+	  and reset GPIO descriptors, maps input GPIOs to threaded IRQs, and
+	  exposes simple diagnostic attributes. This is a study example, not a
+	  production board-management policy driver.
+

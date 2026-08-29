@@ -1,0 +1,7 @@
+config DEMO_PWM_TACH_FAN
+	tristate "Demo PWM and tachometer fan"
+	depends on PWM && GPIOLIB && HWMON
+	help
+	  Educational PWM consumer and GPIO tach IRQ hwmon driver.
+	  Prefer the in-tree pwm-fan driver when it fits real hardware.
+

@@ -1,0 +1,28 @@
+// SPDX-License-Identifier: GPL-2.0-only
+#include <dt-bindings/gpio/gpio.h>
+
+/ {
+	can_a_phy: can-phy-a {
+		compatible = "ti,tcan1042";
+		#phy-cells = <0>;
+		standby-gpios = <&gpio1 4 GPIO_ACTIVE_HIGH>;
+		max-bitrate = <5000000>;
+	};
+
+	can_b_phy: can-phy-b {
+		compatible = "ti,tcan1042";
+		#phy-cells = <0>;
+		standby-gpios = <&gpio1 5 GPIO_ACTIVE_HIGH>;
+		max-bitrate = <5000000>;
+	};
+};
+
+&can0 {
+	phys = <&can_a_phy>;
+	status = "okay";
+};
+
+&can1 {
+	phys = <&can_b_phy>;
+	status = "okay";
+};

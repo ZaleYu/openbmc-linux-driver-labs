@@ -1,0 +1,10 @@
+/dts-v1/;
+/plugin/;
+
+/* Replace &i2c7 with the MCTP-capable BMC controller and board wiring. */
+&i2c7 {
+	status = "okay";
+	clock-frequency = <400000>;
+	mctp-controller;
+};
+

@@ -1,0 +1,35 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	fan2: zone0-fan {
+		compatible = "pwm-fan";
+		pwms = <&pwm0 2 40000 0>;
+		cooling-levels = <80 120 170 220 255>;
+		#cooling-cells = <2>;
+	};
+
+	thermal-zones {
+		board_thermal: board-thermal {
+			thermal-sensors = <&board_temp 0>;
+			polling-delay-passive = <1000>;
+			polling-delay = <2000>;
+
+			trips {
+				board_hot: board-hot {
+					temperature = <70000>;
+					hysteresis = <3000>;
+					type = "passive";
+				};
+			};
+
+			cooling-maps {
+				map0 {
+					trip = <&board_hot>;
+					cooling-device = <&fan2 1 4>;
+				};
+			};
+		};
+	};
+};
+

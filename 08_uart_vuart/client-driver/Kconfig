@@ -1,0 +1,7 @@
+config DEMO_UART_MCU
+	tristate "Demo UART management MCU serdev client"
+	depends on SERIAL_DEV_BUS
+	help
+	  Educational newline-framed serdev client for a fictional management MCU.
+	  It periodically transmits PING and safely bounds received lines.
+

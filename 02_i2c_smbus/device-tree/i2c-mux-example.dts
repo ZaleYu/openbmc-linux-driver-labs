@@ -1,0 +1,63 @@
+/dts-v1/;
+/plugin/;
+
+/*
+ * PCA9548-style topology with identical 0x48 sensors on isolated channels.
+ * Adapt the controller label and compatible to the actual mux.
+ */
+
+/ {
+	compatible = "demo,openbmc-study-board";
+
+	fragment@0 {
+		target = <&i2c5>;
+
+		__overlay__ {
+			status = "okay";
+			clock-frequency = <400000>;
+
+			i2c-mux@70 {
+				compatible = "nxp,pca9548";
+				reg = <0x70>;
+				#address-cells = <1>;
+				#size-cells = <0>;
+				i2c-mux-idle-disconnect;
+
+				i2c@0 {
+					reg = <0>;
+					#address-cells = <1>;
+					#size-cells = <0>;
+
+					inlet-temperature@48 {
+						compatible = "demo,temp-sensor";
+						reg = <0x48>;
+					};
+				};
+
+				i2c@1 {
+					reg = <1>;
+					#address-cells = <1>;
+					#size-cells = <0>;
+
+					outlet-temperature@48 {
+						compatible = "demo,temp-sensor";
+						reg = <0x48>;
+					};
+				};
+
+				i2c@2 {
+					reg = <2>;
+					#address-cells = <1>;
+					#size-cells = <0>;
+
+					fru-eeprom@50 {
+						compatible = "atmel,24c02";
+						reg = <0x50>;
+						pagesize = <8>;
+					};
+				};
+			};
+		};
+	};
+};
+

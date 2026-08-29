@@ -1,0 +1,35 @@
+#include <dt-bindings/gpio/gpio.h>
+
+/dts-v1/;
+/plugin/;
+
+/*
+ * Educational overlay. Change the GPIO controller label and offsets to match
+ * the target BMC board. A production compatible requires a YAML binding.
+ */
+
+/ {
+	compatible = "demo,openbmc-study-board";
+
+	fragment@0 {
+		target-path = "/";
+
+		__overlay__ {
+			board-management-gpio {
+				compatible = "demo,gpio-irq-monitor";
+
+				/* Logical 1 means the removable module is present. */
+				presence-gpios = <&gpio 17 GPIO_ACTIVE_LOW>;
+
+				/* Logical 1 means a hardware fault is asserted. */
+				fault-gpios = <&gpio 27 GPIO_ACTIVE_LOW>;
+
+				/* Logical 1 asserts reset; probe starts deasserted. */
+				reset-gpios = <&gpio 22 GPIO_ACTIVE_LOW>;
+
+				debounce-interval-us = <20000>;
+			};
+		};
+	};
+};
+

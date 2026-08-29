@@ -1,0 +1,38 @@
+/dts-v1/;
+/plugin/;
+
+/*
+ * Shared-bus study example.
+ *
+ * `multi-master` only informs a supporting controller driver that another
+ * controller may use the wires. It does not create hardware arbitration or an
+ * ownership protocol. Verify the exact controller binding and board design.
+ */
+
+/ {
+	compatible = "demo,openbmc-study-board";
+
+	fragment@0 {
+		target = <&i2c7>;
+
+		__overlay__ {
+			status = "okay";
+			clock-frequency = <100000>;
+			multi-master;
+
+			/* A target visible to both BMC and host controllers. */
+			shared-fru@50 {
+				compatible = "atmel,24c02";
+				reg = <0x50>;
+				pagesize = <8>;
+				read-only;
+			};
+		};
+	};
+};
+
+/*
+ * If the board uses a hardware arbiter, GPIO semaphore, or bus switch, model
+ * that component using its real binding instead of inventing properties here.
+ */
+

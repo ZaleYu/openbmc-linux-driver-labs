@@ -1,0 +1,10 @@
+/dts-v1/;
+/plugin/;
+
+/* Board DTS fragment: &adc identifies an existing IIO provider. */
+/ {
+	board_hwmon: board-hwmon {
+		compatible = "iio-hwmon";
+		io-channels = <&adc 0>, <&adc 1>, <&adc 2>;
+	};
+};

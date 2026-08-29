@@ -1,0 +1,7 @@
+config DEMO_USB_BULK
+	tristate "Educational USB bulk loopback client"
+	depends on USB
+	help
+	  Build a study-only host interface driver for the configfs Loopback
+	  gadget using reserved lab VID/PID ffff:ffff. Never enable this identity
+	  in a production image.

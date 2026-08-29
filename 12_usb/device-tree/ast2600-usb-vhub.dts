@@ -1,0 +1,8 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/* Board DTS fragment for the AST2600 USB virtual hub device controller. */
+
+&vhub {
+	status = "okay";
+};
+
+/* Verify upstream-port routing and endpoint/device limits on the target board. */

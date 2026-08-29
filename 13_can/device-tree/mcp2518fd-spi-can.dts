@@ -1,0 +1,25 @@
+// SPDX-License-Identifier: GPL-2.0-only
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+
+/ {
+	can_osc: can-oscillator {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <40000000>;
+	};
+};
+
+&spi1 {
+	status = "okay";
+
+	can@0 {
+		compatible = "microchip,mcp2518fd";
+		reg = <0>;
+		clocks = <&can_osc>;
+		interrupt-parent = <&gpio0>;
+		interrupts = <18 IRQ_TYPE_LEVEL_LOW>;
+		spi-max-frequency = <20000000>;
+		xceiver-supply = <&reg_can_5v>;
+	};
+};

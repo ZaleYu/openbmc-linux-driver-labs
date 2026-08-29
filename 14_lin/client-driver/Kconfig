@@ -1,0 +1,7 @@
+config DEMO_LIN_SENSOR
+	tristate "Educational UART/serdev LIN temperature sensor"
+	depends on SERIAL_DEV_BUS && HWMON && GPIOLIB
+	help
+	  Study-only LIN master/client using UART break control and a fictional
+	  temperature response. This is not a generic LIN subsystem or production
+	  protocol driver.

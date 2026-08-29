@@ -1,0 +1,25 @@
+/dts-v1/;
+/plugin/;
+
+/*
+ * Example only. The selected mux must allow endpoint-initiated traffic to
+ * reach the BMC. Review idle-disconnect and channel ownership carefully.
+ */
+&i2c7 {
+	status = "okay";
+
+	mux@70 {
+		compatible = "nxp,pca9548";
+		reg = <0x70>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		i2c@2 {
+			reg = <2>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			mctp-controller;
+		};
+	};
+};
+

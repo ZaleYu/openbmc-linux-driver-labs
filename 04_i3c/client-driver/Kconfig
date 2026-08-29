@@ -1,0 +1,10 @@
+config DEMO_I3C_SENSOR
+	tristate "Educational I3C temperature sensor"
+	depends on I3C && HWMON
+	help
+	  Build a study-only Linux 6.18 driver for a fictional I3C sensor.
+
+	  The example demonstrates PID-based matching, private SDR transfers,
+	  hwmon registration, IBI allocation/handling, and teardown. It must be
+	  adapted to a real target datasheet and target kernel API.
+

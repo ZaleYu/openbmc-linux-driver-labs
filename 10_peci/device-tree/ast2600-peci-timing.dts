@@ -1,0 +1,13 @@
+/dts-v1/;
+/plugin/;
+
+/*
+ * Example board override. Keep the upstream 1 MHz / 1000 ms values unless
+ * measurements and platform requirements justify a change.
+ */
+&peci0 {
+	status = "okay";
+	clock-frequency = <1000000>;
+	cmd-timeout-ms = <1000>;
+};
+

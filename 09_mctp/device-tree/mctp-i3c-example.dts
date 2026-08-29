@@ -1,0 +1,9 @@
+/dts-v1/;
+/plugin/;
+
+/* I3C MCTP endpoints are normally discovered; do not invent child nodes. */
+&i3c0 {
+	status = "okay";
+	mctp-controller;
+};
+

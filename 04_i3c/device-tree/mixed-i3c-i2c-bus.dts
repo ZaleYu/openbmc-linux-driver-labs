@@ -1,0 +1,34 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/i3c/i3c.h>
+
+/* Verify every I2C target's LVR capabilities before adapting this fragment. */
+
+&i3c0 {
+	status = "okay";
+	#address-cells = <3>;
+	#size-cells = <0>;
+	i3c-scl-hz = <12500000>;
+	i2c-scl-hz = <400000>;
+
+	i3c_sensor: sensor@68,24604561004 {
+		compatible = "demo,i3c-temp-sensor";
+		reg = <0x68 0x246 0x04561004>;
+		assigned-address = <0x30>;
+	};
+
+	legacy_fru: eeprom@50 {
+		compatible = "atmel,24c02";
+		reg = <0x50 0x0 (I2C_FM | I2C_FILTER)>;
+		pagesize = <8>;
+	};
+
+	legacy_gpio: gpio@20 {
+		compatible = "nxp,pca9555";
+		reg = <0x20 0x0 (I2C_FM | I2C_FILTER)>;
+		gpio-controller;
+		#gpio-cells = <2>;
+	};
+};
+

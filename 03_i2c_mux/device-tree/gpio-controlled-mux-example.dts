@@ -1,0 +1,64 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+
+/*
+ * Two GPIO selector bits create states 0..3. This board uses state 3 as an
+ * electrically disconnected idle state; remove idle-state if hardware does
+ * not provide that behavior.
+ */
+
+/ {
+	gpio_i2c_mux: i2c-mux-gpio {
+		compatible = "i2c-mux-gpio";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		i2c-parent = <&i2c3>;
+		mux-gpios = <&gpio0 20 GPIO_ACTIVE_HIGH>,
+			      <&gpio0 21 GPIO_ACTIVE_HIGH>;
+		idle-state = <3>;
+		settle-time-us = <5>;
+
+		i2c@0 {
+			reg = <0>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			fru_0: eeprom@50 {
+				compatible = "atmel,24c02";
+				reg = <0x50>;
+				pagesize = <8>;
+			};
+		};
+
+		i2c@1 {
+			reg = <1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			fru_1: eeprom@50 {
+				compatible = "atmel,24c02";
+				reg = <0x50>;
+				pagesize = <8>;
+			};
+		};
+
+		i2c@2 {
+			reg = <2>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			fru_2: eeprom@50 {
+				compatible = "atmel,24c02";
+				reg = <0x50>;
+				pagesize = <8>;
+			};
+		};
+	};
+};
+
+&i2c3 {
+	status = "okay";
+};
+

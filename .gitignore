@@ -1,0 +1,93 @@
+# Kernel modules and Kbuild intermediates
+*.o
+*.o.d
+*.ko
+*.ko.*
+*.mod
+*.mod.c
+*.mod.o
+*.order
+*.symvers
+Module.symvers
+modules.order
+.*.cmd
+.cache.mk
+.tmp_versions/
+
+# Device Tree build outputs
+*.dtb
+*.dtbo
+*.dt.yaml
+*.dts.tmp
+
+# Common build and coverage outputs
+build/
+out/
+dist/
+coverage/
+compile_commands.json
+*.gcda
+*.gcno
+*.gcov
+
+# Userspace binaries produced by the labs
+01_gpio_irq/userspace/monitor_gpio_v2
+01_gpio_irq/userspace/set_gpio_v2
+02_i2c_smbus/userspace/test_i2c_sensor
+02_i2c_smbus/userspace/test_smbus_access
+03_i2c_mux/userspace/resolve_mux_channel
+03_i2c_mux/userspace/test_downstream_i2c
+04_i3c/userspace/inspect_i3c_device
+04_i3c/userspace/test_i3c_sensor
+05_spi/userspace/spidev_transfer
+05_spi/userspace/test_spi_sensor
+06_hwmon_iio/userspace/monitor_hwmon
+06_hwmon_iio/userspace/read_iio_channel
+07_pwm_tach_fan/userspace/fan_sweep
+07_pwm_tach_fan/userspace/monitor_fan
+08_uart_vuart/userspace/uart_loopback_test
+08_uart_vuart/userspace/vuart_console_logger
+09_mctp/userspace/mctp_echo
+09_mctp/userspace/mctp_request
+10_peci/userspace/peci_hwmon_dump
+10_peci/userspace/peci_inventory
+11_espi_kcs/userspace/kcs_inventory
+11_espi_kcs/userspace/kcs_lab_responder
+12_usb/userspace/usb_bulk_test
+12_usb/userspace/usb_inventory
+13_can/userspace/can_receive
+13_can/userspace/can_send
+14_lin/userspace/lin_frame_tool
+14_lin/userspace/lin_tty_master
+
+# Logs, traces, captures, and crash output
+*.log
+*.trace
+*.pcap
+*.pcapng
+core
+core.*
+
+# Generated archives and packages
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+
+# Source-navigation databases
+tags
+TAGS
+cscope.*
+GTAGS
+GRTAGS
+GPATH
+
+# Editor and operating-system files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini

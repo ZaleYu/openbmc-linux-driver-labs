@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/* Educational board fragment; demo,lin-temp-node is not an upstream binding. */
+
+&uart3 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_uart3>;
+	current-speed = <19200>;
+	status = "okay";
+
+	lin-temperature {
+		compatible = "demo,lin-temp-node";
+		demo,lin-frame-id = <0x12>;
+		demo,poll-interval-ms = <1000>;
+	};
+};

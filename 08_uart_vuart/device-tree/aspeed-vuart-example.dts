@@ -1,0 +1,15 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/interrupt-controller/irq.h>
+
+/*
+ * AST2600 SoC DTS already defines &vuart1 using aspeed,ast2500-vuart.
+ * Host firmware and hardware routing must agree with LPC address and SIRQ.
+ */
+&vuart1 {
+	status = "okay";
+	aspeed,lpc-io-reg = <0x3f8>;
+	aspeed,lpc-interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
+};
+

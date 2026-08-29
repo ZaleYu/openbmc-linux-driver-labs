@@ -1,0 +1,15 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/gpio.h>
+
+/ {
+	demo_fan0 {
+		compatible = "openai,demo-pwm-tach-fan";
+		pwms = <&pwm0 0 40000 0>; /* 25 kHz */
+		tach-gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>;
+		pulses-per-revolution = <2>;
+		fan-min-rpm = <1200>;
+	};
+};
+

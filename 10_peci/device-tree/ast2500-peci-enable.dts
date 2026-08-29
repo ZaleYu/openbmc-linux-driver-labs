@@ -1,0 +1,8 @@
+/dts-v1/;
+/plugin/;
+
+/* The AST2500 board pattern is also to enable the SoC-provided node. */
+&peci0 {
+	status = "okay";
+};
+

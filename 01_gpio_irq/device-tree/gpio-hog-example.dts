@@ -1,0 +1,34 @@
+#include <dt-bindings/gpio/gpio.h>
+
+/dts-v1/;
+/plugin/;
+
+/*
+ * Hogs are claimed by the GPIO provider. Use them only when no functional
+ * consumer driver needs ownership or runtime sequencing.
+ */
+
+/ {
+	compatible = "demo,openbmc-study-board";
+
+	fragment@0 {
+		target = <&gpio>;
+
+		__overlay__ {
+			boot-mode-strap-hog {
+				gpio-hog;
+				gpios = <12 GPIO_ACTIVE_HIGH>;
+				input;
+				line-name = "BOOT_MODE_STRAP";
+			};
+
+			flash-write-protect-hog {
+				gpio-hog;
+				gpios = <13 GPIO_ACTIVE_HIGH>;
+				output-high;
+				line-name = "FLASH_WP";
+			};
+		};
+	};
+};
+

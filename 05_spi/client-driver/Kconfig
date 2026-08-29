@@ -1,0 +1,7 @@
+config DEMO_SPI_SENSOR
+	tristate "Demo SPI board-management sensor"
+	depends on SPI && HWMON
+	help
+	  Educational driver for the fictional openai,demo-spi-sensor device.
+	  This is not a binding or driver for production hardware.
+

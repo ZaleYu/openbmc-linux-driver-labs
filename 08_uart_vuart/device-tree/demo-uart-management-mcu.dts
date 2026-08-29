@@ -1,0 +1,13 @@
+/dts-v1/;
+/plugin/;
+
+/* Replace &uart3 and pinctrl with the target BMC board wiring. */
+&uart3 {
+	status = "okay";
+	current-speed = <115200>;
+
+	management-mcu {
+		compatible = "openai,demo-uart-mcu";
+	};
+};
+

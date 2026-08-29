@@ -1,0 +1,67 @@
+/dts-v1/;
+/plugin/;
+
+/*
+ * Educational fragment for the fictional demo,quad-i2c-mux.
+ * Replace controller labels, compatible strings, and endpoints for the board.
+ */
+
+&i2c5 {
+	status = "okay";
+
+	demo_mux: i2c-mux@70 {
+		compatible = "demo,quad-i2c-mux";
+		reg = <0x70>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		i2c-mux-idle-disconnect;
+
+		i2c@0 {
+			reg = <0>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			temp_sensor_a: sensor@48 {
+				compatible = "demo,temp-sensor";
+				reg = <0x48>;
+			};
+		};
+
+		i2c@1 {
+			reg = <1>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			temp_sensor_b: sensor@48 {
+				compatible = "demo,temp-sensor";
+				reg = <0x48>;
+			};
+		};
+
+		i2c@2 {
+			reg = <2>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			fru_eeprom: eeprom@50 {
+				compatible = "atmel,24c02";
+				reg = <0x50>;
+				pagesize = <8>;
+			};
+		};
+
+		i2c@3 {
+			reg = <3>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			gpio_expander: gpio@20 {
+				compatible = "nxp,pca9555";
+				reg = <0x20>;
+				gpio-controller;
+				#gpio-cells = <2>;
+			};
+		};
+	};
+};
+

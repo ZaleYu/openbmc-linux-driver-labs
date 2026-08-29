@@ -1,0 +1,45 @@
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+
+/dts-v1/;
+/plugin/;
+
+/* Standard input-subsystem solution for front-panel and event GPIOs. */
+
+/ {
+	compatible = "demo,openbmc-study-board";
+
+	fragment@0 {
+		target-path = "/";
+
+		__overlay__ {
+			gpio-keys {
+				compatible = "gpio-keys";
+				autorepeat;
+
+				power-button {
+					label = "POWER_BUTTON";
+					gpios = <&gpio 3 GPIO_ACTIVE_LOW>;
+					linux,code = <KEY_POWER>;
+					debounce-interval = <30>;
+					wakeup-source;
+				};
+
+				reset-button {
+					label = "RESET_BUTTON";
+					gpios = <&gpio 4 GPIO_ACTIVE_LOW>;
+					linux,code = <KEY_RESTART>;
+					debounce-interval = <30>;
+				};
+
+				identify-button {
+					label = "ID_BUTTON";
+					gpios = <&gpio 5 GPIO_ACTIVE_LOW>;
+					linux,code = <KEY_PROG1>;
+					debounce-interval = <30>;
+				};
+			};
+		};
+	};
+};
+

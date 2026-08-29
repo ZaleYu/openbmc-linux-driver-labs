@@ -1,0 +1,17 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	fragment@0 {
+		target-path = "/soc";
+		__overlay__ {
+			demo_adc: adc@1e6e9000 {
+				compatible = "openai,demo-bmc-adc";
+				reg = <0x1e6e9000 0x100>;
+				#io-channel-cells = <1>;
+				status = "okay";
+			};
+		};
+	};
+};
+

@@ -1,0 +1,9 @@
+config SENSORS_DEMO_I2C
+	tristate "Educational demo I2C temperature sensor"
+	depends on I2C
+	select REGMAP_I2C
+	help
+	  Build an educational hwmon client driver for the fictional
+	  demo,temp-sensor device. This is a study example, not a driver for
+	  production hardware.
+

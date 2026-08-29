@@ -1,0 +1,6 @@
+config DEMO_MMIO_CAN
+	tristate "Educational fictional MMIO CAN controller"
+	depends on CAN_DEV && OF && HAS_IOMEM
+	help
+	  Study-only SocketCAN controller skeleton using a fictional register map.
+	  It cannot operate real hardware and must never be selected for a product.

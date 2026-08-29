@@ -1,0 +1,26 @@
+/dts-v1/;
+/plugin/;
+
+/*
+ * The secondary controller appears to the primary as an I3C target with a PID.
+ * How the second SoC controller registers in secondary mode is controller-
+ * specific and must follow its own binding; no generic property is invented.
+ */
+
+&i3c0 {
+	status = "okay";
+	#address-cells = <3>;
+	#size-cells = <0>;
+	i3c-scl-hz = <12500000>;
+
+	secondary_controller: controller@0,20000010000 {
+		reg = <0x0 0x200 0x00010000>;
+		assigned-address = <0x20>;
+	};
+
+	management_endpoint: endpoint@0,24604561004 {
+		reg = <0x0 0x246 0x04561004>;
+		assigned-address = <0x30>;
+	};
+};
+

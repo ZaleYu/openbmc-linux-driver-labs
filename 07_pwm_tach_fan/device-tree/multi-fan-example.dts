@@ -1,0 +1,23 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/interrupt-controller/irq.h>
+
+/ {
+	fan0: chassis-fan0 {
+		compatible = "pwm-fan";
+		pwms = <&pwm0 0 40000 0>;
+		interrupt-parent = <&gpio0>;
+		interrupts = <17 IRQ_TYPE_EDGE_FALLING>;
+		pulses-per-revolution = <2>;
+	};
+
+	fan1: chassis-fan1 {
+		compatible = "pwm-fan";
+		pwms = <&pwm0 1 40000 0>;
+		interrupt-parent = <&gpio0>;
+		interrupts = <18 IRQ_TYPE_EDGE_FALLING>;
+		pulses-per-revolution = <2>;
+	};
+};
+

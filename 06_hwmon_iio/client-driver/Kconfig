@@ -1,0 +1,8 @@
+config DEMO_BMC_ADC
+	tristate "Demo BMC MMIO ADC"
+	depends on IIO
+	depends on HAS_IOMEM
+	help
+	  Educational IIO provider for a fictional four-channel BMC ADC.
+	  It is not suitable for production hardware.
+

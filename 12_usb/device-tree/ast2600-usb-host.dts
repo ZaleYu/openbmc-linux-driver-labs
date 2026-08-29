@@ -1,0 +1,11 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/* Board DTS fragment: labels come from the AST2600 SoC .dtsi. */
+
+&ehci0 {
+	status = "okay";
+};
+
+/* Enable only if the second controller is routed as a powered host port. */
+&ehci1 {
+	status = "okay";
+};

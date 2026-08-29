@@ -1,0 +1,9 @@
+config DEMO_I2C_MUX
+	tristate "Educational four-channel I2C mux"
+	depends on I2C && I2C_MUX
+	help
+	  Build a study-only driver for the fictional demo,quad-i2c-mux.
+
+	  The device uses a one-byte, one-hot channel selector. This example
+	  demonstrates i2c-mux-core integration and parent-locked callbacks; it
+	  must not be used for real hardware without a datasheet-based rewrite.

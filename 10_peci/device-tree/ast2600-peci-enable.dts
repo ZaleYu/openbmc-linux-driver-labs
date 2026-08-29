@@ -1,0 +1,8 @@
+/dts-v1/;
+/plugin/;
+
+/* AST2600 SoC DTSI already provides resources and conservative defaults. */
+&peci0 {
+	status = "okay";
+};
+

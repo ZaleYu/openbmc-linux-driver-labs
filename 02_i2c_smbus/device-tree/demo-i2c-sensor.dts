@@ -1,0 +1,30 @@
+/dts-v1/;
+/plugin/;
+
+/*
+ * Educational overlay. Change controller/GPIO labels and interrupt encoding
+ * to match the target board and its binding.
+ */
+
+/ {
+	compatible = "demo,openbmc-study-board";
+
+	fragment@0 {
+		target = <&i2c1>;
+
+		__overlay__ {
+			status = "okay";
+			clock-frequency = <400000>;
+
+			temperature-sensor@48 {
+				compatible = "demo,temp-sensor";
+				reg = <0x48>;
+
+				/* Optional alert wiring; adapt to the GPIO controller. */
+				interrupt-parent = <&gpio>;
+				interrupts = <17 2>; /* GPIO 17, falling edge: board-specific */
+			};
+		};
+	};
+};
+

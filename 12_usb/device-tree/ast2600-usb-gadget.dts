@@ -1,0 +1,8 @@
+// SPDX-License-Identifier: GPL-2.0-only
+/* Board DTS fragment for the AST2600 single-port USB device controller. */
+
+&udc {
+	status = "okay";
+};
+
+/* Gadget descriptors/functions are created by kernel code or configfs. */
